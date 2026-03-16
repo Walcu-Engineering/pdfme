@@ -1,0 +1,5 @@
+overrides:
+  '@pdfme/common': link:../../../../.local/share/pnpm/global/5/node_modules/@pdfme/common
+  '@pdfme/schemas': link:../../../../.local/share/pnpm/global/5/node_modules/@pdfme/schemas
+  '@walcu-engineering/pdfme-common': link:../../../../.local/share/pnpm/global/5/node_modules/@pdfme/common
+  '@walcu-engineering/pdfme-schemas': link:../../../../.local/share/pnpm/global/5/node_modules/@pdfme/schemas

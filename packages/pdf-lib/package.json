@@ -1,6 +1,6 @@
 {
-  "name": "@pdfme/pdf-lib",
-  "version": "0.0.0",
+  "name": "@walcu-engineering/pdfme-pdf-lib",
+  "version": "0.0.1",
   "sideEffects": false,
   "author": "hand-dot",
   "license": "MIT",
@@ -84,6 +84,6 @@
     ]
   },
   "publishConfig": {
-    "access": "public"
+    "registry": "https://npm.pkg.github.com"
   }
 }

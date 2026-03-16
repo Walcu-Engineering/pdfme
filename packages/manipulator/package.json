@@ -1,6 +1,6 @@
 {
-  "name": "@pdfme/manipulator",
-  "version": "0.0.0",
+  "name": "@walcu-engineering/pdfme-manipulator",
+  "version": "0.0.1",
   "sideEffects": false,
   "author": "hand-dot",
   "license": "MIT",
@@ -44,10 +44,10 @@
     "prettier": "prettier --write 'src/**/*.ts'"
   },
   "dependencies": {
-    "@pdfme/pdf-lib": "*"
+    "@walcu-engineering/pdfme-pdf-lib": "*"
   },
   "publishConfig": {
-    "access": "public"
+    "registry": "https://npm.pkg.github.com"
   },
   "devDependencies": {
     "@pdfme/converter": "*",

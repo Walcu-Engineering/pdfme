@@ -104,9 +104,10 @@ async function createThumbnailFromTemplate(templatePath, thumbnailPath) {
 
     const thumbnail = images[0];
     fs.writeFileSync(thumbnailPath, Buffer.from(thumbnail));
+    return true;
   } catch (err) {
     console.error(`Failed to create thumbnail from ${templatePath}:`, err);
-    throw err;
+    return false;
   }
 }
 
@@ -144,10 +145,12 @@ async function main() {
     }
 
     const thumbnailPngPath = path.join(templatesPath, dir, 'thumbnail.png');
-    await createThumbnailFromTemplate(templateJsonPath, thumbnailPngPath);
+    const success = await createThumbnailFromTemplate(templateJsonPath, thumbnailPngPath);
 
-    hashMap[dir] = currentHash;
-    console.log(`Generated thumbnail for ${dir}.`);
+    if (success) {
+      hashMap[dir] = currentHash;
+      console.log(`Generated thumbnail for ${dir}.`);
+    }
   };
 
   await Promise.all(dirs.map((dir) => limit(() => processDir(dir))));

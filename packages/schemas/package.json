@@ -1,6 +1,6 @@
 {
-  "name": "@pdfme/schemas",
-  "version": "0.0.0",
+  "name": "@walcu-engineering/pdfme-schemas",
+  "version": "0.0.1",
   "sideEffects": false,
   "author": "hand-dot",
   "license": "MIT",
@@ -55,7 +55,7 @@
     "prettier": "prettier --write 'src/**/*.ts'"
   },
   "dependencies": {
-    "@pdfme/pdf-lib": "*",
+    "@walcu-engineering/pdfme-pdf-lib": "*",
     "air-datepicker": "^3.6.0",
     "bwip-js": "^4.8.0",
     "date-fns": "^4.1.0",
@@ -92,6 +92,6 @@
     ]
   },
   "publishConfig": {
-    "access": "public"
+    "registry": "https://npm.pkg.github.com"
   }
 }

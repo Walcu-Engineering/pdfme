@@ -1,6 +1,6 @@
 {
-  "name": "@pdfme/common",
-  "version": "0.0.0",
+  "name": "@walcu-engineering/pdfme-common",
+  "version": "0.0.1",
   "sideEffects": false,
   "author": "hand-dot",
   "license": "MIT",
@@ -48,7 +48,7 @@
     "prettier": "prettier --write 'src/**/*.ts'"
   },
   "dependencies": {
-    "@pdfme/pdf-lib": "*",
+    "@walcu-engineering/pdfme-pdf-lib": "*",
     "acorn": "^8.16.0",
     "buffer": "^6.0.3",
     "zod": "^4.3.6"
@@ -76,7 +76,7 @@
     ]
   },
   "publishConfig": {
-    "access": "public"
+    "registry": "https://npm.pkg.github.com"
   },
   "devDependencies": {
     "@types/estree": "^1.0.6"

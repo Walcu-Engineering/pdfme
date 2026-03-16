@@ -97,6 +97,8 @@ const allowedGlobals: Record<string, unknown> = {
   decodeURIComponent,
   encodeURI,
   encodeURIComponent,
+  toDate: (date: string) => new Date(date),
+  newDate: (...args: [string|number|Date]) => new Date(...args),
 };
 
 const validateAST = (node: AcornNode): void => {

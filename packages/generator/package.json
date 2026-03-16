@@ -1,6 +1,6 @@
 {
-  "name": "@pdfme/generator",
-  "version": "0.0.0",
+  "name": "@walcu-engineering/pdfme-generator",
+  "version": "0.0.1",
   "sideEffects": false,
   "author": "hand-dot",
   "license": "MIT",
@@ -48,7 +48,9 @@
     "prettier": "prettier --write 'src/**/*.ts'"
   },
   "dependencies": {
-    "@pdfme/pdf-lib": "*",
+    "@walcu-engineering/pdfme-common": "link:../../../../.local/share/pnpm/global/5/node_modules/@pdfme/common",
+    "@walcu-engineering/pdfme-pdf-lib": "*",
+    "@walcu-engineering/pdfme-schemas": "link:../../../../.local/share/pnpm/global/5/node_modules/@pdfme/schemas",
     "fontkit": "^2.0.2"
   },
   "devDependencies": {
@@ -90,6 +92,6 @@
     ]
   },
   "publishConfig": {
-    "access": "public"
+    "registry": "https://npm.pkg.github.com"
   }
 }
