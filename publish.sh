@@ -7,6 +7,37 @@ set -e # Exit on any error
 
 PUBLISH_ARGS="$@"
 
+PACKAGES=("pdf-lib" "common" "converter" "schemas" "generator" "ui" "manipulator")
+
+echo "Current package versions:"
+for pkg in "${PACKAGES[@]}"; do
+  version=$(node -p "require('./packages/$pkg/package.json').version")
+  echo "  @walcu-engineering/pdfme-$pkg: $version"
+done
+
+echo ""
+read -p "Bump patch version for all packages? [y/N] " answer
+if [[ "$answer" =~ ^[Yy]$ ]]; then
+  for pkg in "${PACKAGES[@]}"; do
+    pkg_json="packages/$pkg/package.json"
+    current=$(node -p "require('./$pkg_json').version")
+    bumped=$(node -p "
+      const v = '$current'.split('.');
+      v[2] = String(Number(v[2]) + 1);
+      v.join('.')
+    ")
+    # Use a temp file to avoid in-place issues
+    node -e "
+      const fs = require('fs');
+      const data = JSON.parse(fs.readFileSync('$pkg_json', 'utf8'));
+      data.version = '$bumped';
+      fs.writeFileSync('$pkg_json', JSON.stringify(data, null, 2) + '\n');
+    "
+    echo "  $pkg: $current -> $bumped"
+  done
+  echo ""
+fi
+
 echo "Starting publish process for @walcu-engineering/pdfme-* packages..."
 
 # 1. Publish pdf-lib first (no internal dependencies)
