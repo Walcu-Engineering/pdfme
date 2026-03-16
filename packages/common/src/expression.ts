@@ -417,7 +417,8 @@ const evaluatePlaceholders = (arg: {
 
       index = endIndex;
     } else {
-      throw new Error('Invalid placeholder');
+      resultContent += content.slice(startIndex);
+      break;
     }
   }
 
