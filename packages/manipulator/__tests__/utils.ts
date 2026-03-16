@@ -1,5 +1,5 @@
-import { PDFDocument } from '@pdfme/pdf-lib';
-import { pdf2img } from '@pdfme/converter';
+import { PDFDocument } from '@walcu-engineering/pdfme-pdf-lib';
+import { pdf2img } from '@walcu-engineering/pdfme-converter';
 
 export const createTestPDF = async (pageCount: number): Promise<Uint8Array> => {
   const pdfDoc = await PDFDocument.create();

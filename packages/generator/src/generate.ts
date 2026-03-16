@@ -1,5 +1,5 @@
-import * as pdfLib from '@pdfme/pdf-lib';
-import type { GenerateProps, Schema, PDFRenderProps, Template } from '@pdfme/common';
+import * as pdfLib from '@walcu-engineering/pdfme-pdf-lib';
+import type { GenerateProps, Schema, PDFRenderProps, Template } from '@walcu-engineering/pdfme-common';
 import {
   checkGenerateProps,
   getDynamicTemplate,
@@ -7,8 +7,8 @@ import {
   replacePlaceholders,
   pt2mm,
   cloneDeep,
-} from '@pdfme/common';
-import { getDynamicHeightsForTable } from '@pdfme/schemas';
+} from '@walcu-engineering/pdfme-common';
+import { getDynamicHeightsForTable } from '@walcu-engineering/pdfme-schemas';
 import {
   insertPage,
   preprocessing,
@@ -26,7 +26,7 @@ const generate = async (props: GenerateProps): Promise<Uint8Array<ArrayBuffer>> 
 
   if (inputs.length === 0) {
     throw new Error(
-      '[@pdfme/generator] inputs should not be empty, pass at least an empty object in the array',
+      '[@walcu-engineering/pdfme-generator] inputs should not be empty, pass at least an empty object in the array',
     );
   }
 

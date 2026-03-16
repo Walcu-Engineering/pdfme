@@ -1,4 +1,4 @@
-import { Schema, BasePdf, BlankPdf, CommonOptions, isBlankPdf } from '@pdfme/common';
+import { Schema, BasePdf, BlankPdf, CommonOptions, isBlankPdf } from '@walcu-engineering/pdfme-common';
 import { createSingleTable } from './tableHelper.js';
 import { getBodyWithRange, getBody } from './helper.js';
 import { TableSchema } from './types.js';

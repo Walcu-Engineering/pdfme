@@ -18,8 +18,8 @@ import {
   checkUIOptions,
   checkPreviewProps,
   pluginRegistry,
-} from '@pdfme/common';
-import { builtInPlugins } from '@pdfme/schemas';
+} from '@walcu-engineering/pdfme-common';
+import { builtInPlugins } from '@walcu-engineering/pdfme-schemas';
 
 export abstract class BaseUIClass {
   protected domContainer!: HTMLElement | null;

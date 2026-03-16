@@ -1,7 +1,7 @@
 import generate from '../src/generate.js';
 import { other } from './assets/templates/index.js';
-import { getInputFromTemplate } from '@pdfme/common';
-import { text, image, svg, line, rectangle, ellipse, barcodes } from '@pdfme/schemas';
+import { getInputFromTemplate } from '@walcu-engineering/pdfme-common';
+import { text, image, svg, line, rectangle, ellipse, barcodes } from '@walcu-engineering/pdfme-schemas';
 import { getFont, pdfToImages } from './utils.js';
 import 'jest-image-snapshot';
 

@@ -26,10 +26,10 @@
     "sourceMap": true,
     "baseUrl": ".",
     "paths": {
-      "@pdfme/common": [
+      "@walcu-engineering/pdfme-common": [
         "packages/common/dist/esm/src"
       ],
-      "@pdfme/schemas": [
+      "@walcu-engineering/pdfme-schemas": [
         "packages/schemas/dist/esm/src"
       ]
     },

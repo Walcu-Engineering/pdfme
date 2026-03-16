@@ -1,6 +1,6 @@
 import React from 'react';
 import type * as CSS from 'csstype';
-import { ZOOM, BasePdf, isBlankPdf } from '@pdfme/common';
+import { ZOOM, BasePdf, isBlankPdf } from '@walcu-engineering/pdfme-common';
 import { theme } from 'antd';
 
 const getPaddingStyle = (i: number, p: number, color: string): CSS.Properties => {

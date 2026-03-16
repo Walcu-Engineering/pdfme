@@ -11,22 +11,22 @@ importers:
       '@headlessui/react':
         specifier: ^2.2.0
         version: 2.2.9(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@pdfme/common':
+      '@walcu-engineering/pdfme-common':
         specifier: file:../packages/common/dist
         version: dist@file:../packages/common/dist
-      '@pdfme/converter':
+      '@walcu-engineering/pdfme-converter':
         specifier: file:../packages/converter/dist
         version: dist@file:../packages/converter/dist
-      '@pdfme/generator':
+      '@walcu-engineering/pdfme-generator':
         specifier: file:../packages/generator/dist
         version: dist@file:../packages/generator/dist
-      '@pdfme/manipulator':
+      '@walcu-engineering/pdfme-manipulator':
         specifier: file:../packages/manipulator/dist
         version: dist@file:../packages/manipulator/dist
-      '@pdfme/schemas':
+      '@walcu-engineering/pdfme-schemas':
         specifier: file:../packages/schemas/dist
         version: dist@file:../packages/schemas/dist
-      '@pdfme/ui':
+      '@walcu-engineering/pdfme-ui':
         specifier: file:../packages/ui/dist
         version: dist@file:../packages/ui/dist
       '@sentry/react':

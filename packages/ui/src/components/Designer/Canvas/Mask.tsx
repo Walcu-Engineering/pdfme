@@ -1,5 +1,5 @@
 import React from 'react';
-import { Size } from '@pdfme/common';
+import { Size } from '@walcu-engineering/pdfme-common';
 import { RULER_HEIGHT } from '../../../constants.js';
 import { theme } from 'antd';
 

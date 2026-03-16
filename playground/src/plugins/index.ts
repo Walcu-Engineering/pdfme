@@ -14,7 +14,7 @@ import {
   select,
   checkbox,
   radioGroup,
-} from '@pdfme/schemas';
+} from '@walcu-engineering/pdfme-schemas';
 import { signature } from './signature';
 
 export const getPlugins = () => {

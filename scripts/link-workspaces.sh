@@ -6,12 +6,15 @@ for dir in $(ls -d */); do
   cd ..
 done
 
-for dir in generator ui; do
+for dir in converter generator ui; do
   cd "$dir"
-  pnpm link @pdfme/common
-  pnpm link @pdfme/schemas
+  rm -f pnpm-workspace.yaml
+  pnpm link @walcu-engineering/pdfme-common
+  if [ "$dir" != "converter" ]; then
+    pnpm link @walcu-engineering/pdfme-schemas
+  fi
   if [ "$dir" = "ui" ]; then
-    pnpm link @pdfme/converter
+    pnpm link @walcu-engineering/pdfme-converter
   fi
   cd ..
 done

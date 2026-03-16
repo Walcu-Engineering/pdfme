@@ -1,6 +1,6 @@
 {
   "name": "@walcu-engineering/pdfme-manipulator",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "sideEffects": false,
   "author": "hand-dot",
   "license": "MIT",
@@ -50,7 +50,7 @@
     "registry": "https://npm.pkg.github.com"
   },
   "devDependencies": {
-    "@pdfme/converter": "*",
+    "@walcu-engineering/pdfme-converter": "*",
     "@types/estree": "^1.0.6"
   },
   "jest": {

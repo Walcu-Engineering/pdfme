@@ -1,6 +1,6 @@
 {
   "name": "@walcu-engineering/pdfme-converter",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "sideEffects": false,
   "author": "hand-dot",
   "license": "MIT",
@@ -49,7 +49,7 @@
     "pdfjs-dist": "^3.11.174"
   },
   "devDependencies": {
-    "@pdfme/generator": "*",
+    "@walcu-engineering/pdfme-generator": "*",
     "@types/estree": "^1.0.6",
     "canvas": "^2.11.2"
   },

@@ -1,8 +1,8 @@
-import { PDFRenderProps } from '@pdfme/common';
+import { PDFRenderProps } from '@walcu-engineering/pdfme-common';
 import { convertForPdfLayoutProps } from '../utils.js';
 import type { BarcodeSchema } from './types.js';
 import { createBarCode, validateBarcodeInput } from './helper.js';
-import { PDFImage } from '@pdfme/pdf-lib';
+import { PDFImage } from '@walcu-engineering/pdfme-pdf-lib';
 
 const getBarcodeCacheKey = (schema: BarcodeSchema, value: string) => {
   return `${schema.type}${schema.backgroundColor}${schema.barColor}${schema.textColor}${value}${schema.includetext}`;

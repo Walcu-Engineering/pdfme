@@ -30,7 +30,7 @@ body:
       label: Your Environment
       description: A clear and concise description of your environment
       value: |
-        - pdfme package(@pdfme/generator or @pdfme/ui):
+        - pdfme package(@walcu-engineering/pdfme-generator or @walcu-engineering/pdfme-ui):
         - pdfme version:
         - Operating system:
         - Node.js version or Browser name & version:

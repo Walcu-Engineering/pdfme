@@ -17,11 +17,11 @@
   <a href="https://deepwiki.com/pdfme/pdfme">
     <img src="https://deepwiki.com/badge.svg" alt="Ask DeepWiki">
   </a>
-  <a href="https://www.npmjs.com/package/@pdfme/generator">
-    <img src="https://img.shields.io/npm/v/@pdfme/generator.svg" alt="Current npm package version." />
+  <a href="https://www.npmjs.com/package/@walcu-engineering/pdfme-generator">
+    <img src="https://img.shields.io/npm/v/@walcu-engineering/pdfme-generator.svg" alt="Current npm package version." />
   </a>
-  <a href="https://npmcharts.com/compare/@pdfme/common?minimal=true">
-    <img src="https://img.shields.io/npm/dm/@pdfme/common.svg" alt="Downloads per month on npm." />
+  <a href="https://npmcharts.com/compare/@walcu-engineering/pdfme-common?minimal=true">
+    <img src="https://img.shields.io/npm/dm/@walcu-engineering/pdfme-common.svg" alt="Downloads per month on npm." />
   </a>
 </p>
 

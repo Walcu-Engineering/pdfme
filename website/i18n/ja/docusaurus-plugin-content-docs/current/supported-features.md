@@ -8,7 +8,7 @@ pdfmeでは、以下の要素をレンダリングすることができます。
 :::info
 
 テキストスキーマ以外のスキーマを使用する場合は、以下のドキュメントを参照してください。  
-[@pdfme/schemasからのスキーマの使用](/docs/custom-schemas#using-schemas-from-pdfmeschemas)
+[@walcu-engineering/pdfme-schemasからのスキーマの使用](/docs/custom-schemas#using-schemas-from-pdfmeschemas)
 
 :::
 

@@ -1,5 +1,5 @@
-import { PDFDocument } from '@pdfme/pdf-lib';
-import { mm2pt } from '@pdfme/common';
+import { PDFDocument } from '@walcu-engineering/pdfme-pdf-lib';
+import { mm2pt } from '@walcu-engineering/pdfme-common';
 import type { ImageType } from './types.js';
 
 interface Img2PdfOptions {
@@ -105,6 +105,6 @@ export async function img2pdf(
     view.set(pdfUint8Array);
     return buffer;
   } catch (error) {
-    throw new Error(`[@pdfme/converter] img2pdf failed: ${(error as Error).message}`);
+    throw new Error(`[@walcu-engineering/pdfme-converter] img2pdf failed: ${(error as Error).message}`);
   }
 }

@@ -38,6 +38,9 @@ if [[ "$answer" =~ ^[Yy]$ ]]; then
   echo ""
 fi
 
+echo "Building all packages ..."
+pnpm build
+
 echo "Starting publish process for @walcu-engineering/pdfme-* packages..."
 
 # 1. Publish pdf-lib first (no internal dependencies)

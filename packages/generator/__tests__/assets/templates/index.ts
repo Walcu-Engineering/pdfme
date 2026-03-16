@@ -1,4 +1,4 @@
-import { Template } from '@pdfme/common';
+import { Template } from '@walcu-engineering/pdfme-common';
 
 const z97mmx210mm = require('./z97mmx210mm.json') as Template;
 const barcodes = require('./barcodes.json') as Template;

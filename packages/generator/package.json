@@ -1,6 +1,6 @@
 {
   "name": "@walcu-engineering/pdfme-generator",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "sideEffects": false,
   "author": "hand-dot",
   "license": "MIT",
@@ -48,19 +48,19 @@
     "prettier": "prettier --write 'src/**/*.ts'"
   },
   "dependencies": {
-    "@walcu-engineering/pdfme-common": "link:../../../../.local/share/pnpm/global/5/node_modules/@pdfme/common",
+    "@walcu-engineering/pdfme-common": "link:../../../../.local/share/pnpm/global/5/node_modules/@walcu-engineering/pdfme-common",
     "@walcu-engineering/pdfme-pdf-lib": "*",
-    "@walcu-engineering/pdfme-schemas": "link:../../../../.local/share/pnpm/global/5/node_modules/@pdfme/schemas",
+    "@walcu-engineering/pdfme-schemas": "link:../../../../.local/share/pnpm/global/5/node_modules/@walcu-engineering/pdfme-schemas",
     "fontkit": "^2.0.2"
   },
   "devDependencies": {
-    "@pdfme/common": "*",
-    "@pdfme/converter": "*",
-    "@pdfme/schemas": "*"
+    "@walcu-engineering/pdfme-common": "*",
+    "@walcu-engineering/pdfme-converter": "*",
+    "@walcu-engineering/pdfme-schemas": "*"
   },
   "peerDependencies": {
-    "@pdfme/common": "latest",
-    "@pdfme/schemas": "latest"
+    "@walcu-engineering/pdfme-common": "latest",
+    "@walcu-engineering/pdfme-schemas": "latest"
   },
   "jest": {
     "resolver": "ts-jest-resolver",
@@ -68,7 +68,7 @@
       "<rootDir>/jest.setup.js"
     ],
     "moduleNameMapper": {
-      "^@pdfme/schemas/utils$": "<rootDir>/../schemas/src/utils.ts",
+      "^@walcu-engineering/pdfme-schemas/utils$": "<rootDir>/../schemas/src/utils.ts",
       "^.+\\\\.(css|less|scss)$": "identity-obj-proxy"
     },
     "transformIgnorePatterns": [

@@ -6,8 +6,8 @@ import {
   Size,
   getDynamicTemplate,
   replacePlaceholders,
-} from '@pdfme/common';
-import { getDynamicHeightsForTable } from '@pdfme/schemas/utils';
+} from '@walcu-engineering/pdfme-common';
+import { getDynamicHeightsForTable } from '@walcu-engineering/pdfme-schemas/utils';
 import UnitPager from './UnitPager.js';
 import Root from './Root.js';
 import StaticSchema from './StaticSchema.js';
@@ -80,7 +80,7 @@ const Preview = ({
         setSchemasList(sl);
         await refresh(dynamicTemplate);
       })
-      .catch((err) => console.error(`[@pdfme/ui] `, err));
+      .catch((err) => console.error(`[@walcu-engineering/pdfme-ui] `, err));
   };
 
   // Update component state only when _options_ changes

@@ -1,5 +1,5 @@
 // @ts-ignore
-import { generate } from '@pdfme/generator';
+import { generate } from '@walcu-engineering/pdfme-generator';
 import { pdf2img as nodePdf2Img, pdf2size as nodePdf2Size, img2pdf } from '../src/index.node.js';
 
 describe('pdf2img tests', () => {

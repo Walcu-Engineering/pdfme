@@ -10,9 +10,9 @@ import {
   mm2pt,
   pluginRegistry,
   BasePdf,
-} from '@pdfme/common';
-import { builtInPlugins } from '@pdfme/schemas';
-import { PDFPage, PDFDocument, PDFEmbeddedPage, TransformationMatrix } from '@pdfme/pdf-lib';
+} from '@walcu-engineering/pdfme-common';
+import { builtInPlugins } from '@walcu-engineering/pdfme-schemas';
+import { PDFPage, PDFDocument, PDFEmbeddedPage, TransformationMatrix } from '@walcu-engineering/pdfme-pdf-lib';
 import { TOOL_NAME } from './constants.js';
 import type { EmbedPdfBox } from './types.js';
 
@@ -64,7 +64,7 @@ export const validateRequiredFields = (template: Template, inputs: Record<string
     schemaPage.forEach((schema: Schema) => {
       if (schema.required && !schema.readOnly && !inputs.some((input) => input[schema.name])) {
         throw new Error(
-          `[@pdfme/generator] input for '${schema.name}' is required to generate this PDF`,
+          `[@walcu-engineering/pdfme-generator] input for '${schema.name}' is required to generate this PDF`,
         );
       }
     }),
@@ -103,7 +103,7 @@ export const preprocessing = async (arg: { template: Template; userPlugins: Plug
       const plugin = plugins.findByType(type);
 
       if (!plugin || !plugin.pdf) {
-        throw new Error(`[@pdfme/generator] Plugin or renderer for type ${type} not found.
+        throw new Error(`[@walcu-engineering/pdfme-generator] Plugin or renderer for type ${type} not found.
 Check this document: https://pdfme.com/docs/custom-schemas`);
       }
 

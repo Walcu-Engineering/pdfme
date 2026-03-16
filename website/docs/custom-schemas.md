@@ -1,29 +1,29 @@
 # Custom Schemas(Plugins)
 
 By default, pdfme allows you to use a text schema. However, some users may want to utilize schemas for images or QR codes.
-These can be loaded as plugins from the `@pdfme/schemas` package.
+These can be loaded as plugins from the `@walcu-engineering/pdfme-schemas` package.
 
 You can also create your own schemas and load them similarly as plugins.
-This page explains how to use schemas from `@pdfme/schemas` and how to create your own.
+This page explains how to use schemas from `@walcu-engineering/pdfme-schemas` and how to create your own.
 
-## Using Schemas from @pdfme/schemas
+## Using Schemas from @walcu-engineering/pdfme-schemas
 
-Here, we explain how to import image and QR code schemas from `@pdfme/schemas`.
+Here, we explain how to import image and QR code schemas from `@walcu-engineering/pdfme-schemas`.
 
-First, install `@pdfme/schemas`.
+First, install `@walcu-engineering/pdfme-schemas`.
 
 ```bash
-npm install @pdfme/schemas
+npm install @walcu-engineering/pdfme-schemas
 ```
 
-Next, import the required schemas from `@pdfme/schemas` to `@pdfme/generator` and `@pdfme/ui`.
+Next, import the required schemas from `@walcu-engineering/pdfme-schemas` to `@walcu-engineering/pdfme-generator` and `@walcu-engineering/pdfme-ui`.
 
-The following code shows an example of importing QR code and image schemas from `@pdfme/generator` and `@pdfme/ui`.
+The following code shows an example of importing QR code and image schemas from `@walcu-engineering/pdfme-generator` and `@walcu-engineering/pdfme-ui`.
 
 ```ts
-import type { Template } from '@pdfme/common';
-import { text, image, barcodes } from '@pdfme/schemas';
-import { generate } from '@pdfme/generator';
+import type { Template } from '@walcu-engineering/pdfme-common';
+import { text, image, barcodes } from '@walcu-engineering/pdfme-schemas';
+import { generate } from '@walcu-engineering/pdfme-generator';
 
 const template: Template = {
   // skip... you can use text, image, qrcode schema type in template.
@@ -44,12 +44,12 @@ const pdf = await generate({
 });
 ```
 
-In this `@pdfme/ui` example, we're using the Designer, but you can load plugins in the Form and Viewer in the same way.
+In this `@walcu-engineering/pdfme-ui` example, we're using the Designer, but you can load plugins in the Form and Viewer in the same way.
 
 ```ts
-import type { Template } from '@pdfme/common';
-import { text, image, barcodes } from '@pdfme/schemas';
-import { Designer } from '@pdfme/ui';
+import type { Template } from '@walcu-engineering/pdfme-common';
+import { text, image, barcodes } from '@walcu-engineering/pdfme-schemas';
+import { Designer } from '@walcu-engineering/pdfme-ui';
 
 const domContainer = document.getElementById('container');
 const template: Template = {
@@ -99,12 +99,12 @@ The type definitions for plugins are defined within the [packages/common/src/typ
 
 We will explain how the **Plugin** is structured and how it operates.
 
-- **pdf**: Used in `@pdfme/generator`, it includes code for rendering schemas into PDFs. The PDF rendering process is handled by [pdf-lib](https://pdf-lib.js.org/).
-- **ui**: Used in `@pdfme/ui`, it includes code for rendering schemas into the DOM. The ui has the following modes:
+- **pdf**: Used in `@walcu-engineering/pdfme-generator`, it includes code for rendering schemas into PDFs. The PDF rendering process is handled by [pdf-lib](https://pdf-lib.js.org/).
+- **ui**: Used in `@walcu-engineering/pdfme-ui`, it includes code for rendering schemas into the DOM. The ui has the following modes:
   - **viewer**: Utilized in [Viewer](/docs/getting-started#viewer), [Designer](/docs/getting-started#designer) (when no field is selected). Functions as a preview by matching the rendering and appearance of the PDF.
   - **form**: Utilized in [Form](/docs/getting-started#form). Functions as a form that users can input into.
   - **designer**: Utilized in [Designer](/docs/getting-started#designer) (when a field is double-clicked). Basically the same as the form but serves as a WYSIWYG editor where users can input. For textarea and input elements, focusing is required.
-- **propPanel**: Used in `@pdfme/ui`'s [Designer](/docs/getting-started#designer), it allows you to add custom property editing forms to the sidebar when a field is selected. You can fill it out using [form-render](https://xrender.fun/form-render)'s JSON format (widget extensions are also possible).
+- **propPanel**: Used in `@walcu-engineering/pdfme-ui`'s [Designer](/docs/getting-started#designer), it allows you to add custom property editing forms to the sidebar when a field is selected. You can fill it out using [form-render](https://xrender.fun/form-render)'s JSON format (widget extensions are also possible).
 
 :::note
 pdfme relies on [pdf-lib](https://pdf-lib.js.org/) and [form-render](https://xrender.fun/form-render).  
@@ -121,9 +121,9 @@ The images below highlight where the pdf, ui, and propPanel of the plugin are us
 - **ui(mode: designer), ui(mode: viewer), propPanel**
   ![](/img/plugin-designer.png)
 
-### Learning How to Create from @pdfme/schemas' Code
+### Learning How to Create from @walcu-engineering/pdfme-schemas' Code
 
-If you're looking to create your own schema, it is recommended to refer to the existing code within `@pdfme/schemas` while doing so.  
+If you're looking to create your own schema, it is recommended to refer to the existing code within `@walcu-engineering/pdfme-schemas` while doing so.  
 The code for existing schemas can be found in the files below:
 
 - [packages/schemas/src/text/index.ts](https://github.com/pdfme/pdfme/tree/main/packages/schemas/src/text/index.ts): The most complex schema in terms of PDF rendering. The propPanel is also customized using [form-render's Widget](https://xrender.fun/form-render/advanced-widget), demonstrating that the plugin can meet complex needs.

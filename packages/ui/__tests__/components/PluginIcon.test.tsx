@@ -5,7 +5,7 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import PluginIcon from '../../src/components/Designer/PluginIcon';
-import { Plugin, Schema } from '@pdfme/common';
+import { Plugin, Schema } from '@walcu-engineering/pdfme-common';
 import { OptionsContext } from '../../src/contexts';
 
 // Mock Ant Design theme

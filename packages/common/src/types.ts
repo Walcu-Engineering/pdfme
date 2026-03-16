@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import type { PDFPage, PDFDocument } from '@pdfme/pdf-lib';
+import type { PDFPage, PDFDocument } from '@walcu-engineering/pdfme-pdf-lib';
 import type { ThemeConfig, GlobalToken } from 'antd';
 import type { WidgetProps as _PropPanelWidgetProps, Schema as _PropPanelSchema } from 'form-render';
 import {
@@ -40,7 +40,7 @@ export type ChangeSchemas = (objs: ChangeSchemaItem[]) => void;
  * @property {string} value The string used for PDF rendering.
  * @property {T} schema Extended Schema object for rendering.
  * @property {BasePdf} basePdf Base PDF object for rendering.
- * @property {typeof import('@pdfme/pdf-lib')} pdfLib The pdf-lib library used for rendering.
+ * @property {typeof import('@walcu-engineering/pdfme-pdf-lib')} pdfLib The pdf-lib library used for rendering.
  * @property {PDFDocument} pdfDoc PDFDocument object from pdf-lib.
  * @property {PDFPage} page PDFPage object from pdf-lib.
  * @property {GeneratorOptions} options Options object passed from the generator.
@@ -50,7 +50,7 @@ export interface PDFRenderProps<T extends Schema> {
   value: string;
   schema: T;
   basePdf: BasePdf;
-  pdfLib: typeof import('@pdfme/pdf-lib');
+  pdfLib: typeof import('@walcu-engineering/pdfme-pdf-lib');
   pdfDoc: PDFDocument;
   page: PDFPage;
   options: GeneratorOptions;

@@ -1,6 +1,6 @@
-import { ZOOM, Plugin, Schema } from '@pdfme/common';
+import { ZOOM, Plugin, Schema } from '@walcu-engineering/pdfme-common';
 import SignaturePad from 'signature_pad';
-import { image } from '@pdfme/schemas';
+import { image } from '@walcu-engineering/pdfme-schemas';
 
 interface Signature extends Schema {}
 

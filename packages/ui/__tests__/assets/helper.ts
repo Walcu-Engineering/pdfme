@@ -1,6 +1,6 @@
 import * as hooks from '../../src/hooks';
 import { uuid } from '../../src/helper';
-import { BLANK_PDF, Template } from '@pdfme/common';
+import { BLANK_PDF, Template } from '@walcu-engineering/pdfme-common';
 
 export const setupUIMock = () => {
   const backgrounds = ['data:image/png;base64,a...'];

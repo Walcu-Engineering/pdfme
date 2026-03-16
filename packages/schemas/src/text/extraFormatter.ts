@@ -1,4 +1,4 @@
-// No imports needed from @pdfme/common
+// No imports needed from @walcu-engineering/pdfme-common
 import {
   TextAlignCenterIcon,
   TextAlignLeftIcon,

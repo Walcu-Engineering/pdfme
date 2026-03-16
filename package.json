@@ -75,5 +75,8 @@
     "ts-loader": "^9.5.4",
     "ts-prune": "^0.10.3",
     "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "@walcu-engineering/pdfme-common": "link:../../.local/share/pnpm/global/5/node_modules/@walcu-engineering/pdfme-common"
   }
 }

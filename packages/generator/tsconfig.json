@@ -4,13 +4,13 @@
     "outDir": "./dist",
     "baseUrl": ".",
     "paths": {
-      "@pdfme/common": [
+      "@walcu-engineering/pdfme-common": [
         "packages/common/dist/esm/src"
       ],
-      "@pdfme/schemas": [
+      "@walcu-engineering/pdfme-schemas": [
         "packages/schemas/dist/esm/src"
       ],
-      "@pdfme/schemas/utils": [
+      "@walcu-engineering/pdfme-schemas/utils": [
         "packages/schemas/dist/esm/src/utils"
       ]
     }

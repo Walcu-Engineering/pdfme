@@ -1,6 +1,6 @@
 # コンバーター
 
-`@pdfme/converter` は Node.js とブラウザの両方で使用できます。
+`@walcu-engineering/pdfme-converter` は Node.js とブラウザの両方で使用できます。
 
 その主な目的は、PDFを他の形式（画像など）に変換したり、様々なデータ形式（Markdownなど）をPDFに変換することです。
 
@@ -17,7 +17,7 @@
 ## インストール
 
 ```bash
-npm install @pdfme/converter
+npm install @walcu-engineering/pdfme-converter
 ```
 
 Node.jsでPDFを画像に変換する（`pdf2img`）場合は、[node-canvas](https://github.com/Automattic/node-canvas)（^2.11.2）が必要で、追加のステップが必要です：
@@ -32,7 +32,7 @@ npm install canvas@^2.11.2
 PDFページを画像（JPEGまたはPNG形式）に変換します。
 
 ```ts
-import { pdf2img } from '@pdfme/converter';
+import { pdf2img } from '@walcu-engineering/pdfme-converter';
 
 const pdf = new ArrayBuffer(...); // ソースPDF
 const images = await pdf2img(pdf, {
@@ -46,7 +46,7 @@ const images = await pdf2img(pdf, {
 PDFの各ページの幅と高さを取得します。
 
 ```ts
-import { pdf2size } from '@pdfme/converter';
+import { pdf2size } from '@walcu-engineering/pdfme-converter';
 
 const pdf = new ArrayBuffer(...); // ソースPDF
 const sizes = await pdf2size(pdf, {
@@ -59,7 +59,7 @@ const sizes = await pdf2size(pdf, {
 1つまたは複数の画像（JPEGまたはPNG）を1つのPDFファイルに変換します。
 
 ```ts
-import { img2pdf } from '@pdfme/converter';
+import { img2pdf } from '@walcu-engineering/pdfme-converter';
 
 const image1 = new ArrayBuffer(...); // 1枚目の画像
 const image2 = new ArrayBuffer(...); // 2枚目の画像
@@ -75,11 +75,11 @@ const pdf = await img2pdf([image1, image2], {
 
 無効なパラメータが提供された場合、すべての関数は説明的なエラーをスローします：
 
-- 無効なPDF: `[@pdfme/converter] Invalid PDF`
-- 空のPDF: `[@pdfme/converter] The PDF file is empty`
-- 無効なページ範囲: `[@pdfme/converter] Invalid page range`
-- 空の画像配列: `[@pdfme/converter] Input must be a non-empty array of image buffers`
-- 無効な画像: `[@pdfme/converter] Failed to process image`
+- 無効なPDF: `[@walcu-engineering/pdfme-converter] Invalid PDF`
+- 空のPDF: `[@walcu-engineering/pdfme-converter] The PDF file is empty`
+- 無効なページ範囲: `[@walcu-engineering/pdfme-converter] Invalid page range`
+- 空の画像配列: `[@walcu-engineering/pdfme-converter] Input must be a non-empty array of image buffers`
+- 無効な画像: `[@walcu-engineering/pdfme-converter] Failed to process image`
 
 ## 型定義
 
@@ -111,7 +111,7 @@ interface Img2PdfOptions {
 
 ## お問い合わせ
 
-`@pdfme/converter`に関するご質問やご提案がありましたら、以下までご連絡ください：
+`@walcu-engineering/pdfme-converter`に関するご質問やご提案がありましたら、以下までご連絡ください：
 
 - **Discord**: [https://discord.gg/xWPTJbmgNV](https://discord.gg/xWPTJbmgNV)
 - **GitHub Issues**: [https://github.com/pdfme/pdfme/issues](https://github.com/pdfme/pdfme/issues)

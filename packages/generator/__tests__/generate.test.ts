@@ -1,5 +1,5 @@
 import generate from '../src/generate.js';
-import { Template, BLANK_PDF, Schema } from '@pdfme/common';
+import { Template, BLANK_PDF, Schema } from '@walcu-engineering/pdfme-common';
 import { getFont, pdfToImages } from './utils.js';
 import 'jest-image-snapshot';
 
@@ -177,7 +177,7 @@ describe('check validation', () => {
       await generate({ inputs, template, options: { font: getFont() } });
       fail();
     } catch (e: any) {
-      expect(e.message).toEqual(`[@pdfme/common] Invalid argument:
+      expect(e.message).toEqual(`[@walcu-engineering/pdfme-common] Invalid argument:
 --------------------------
 ERROR POSITION: inputs
 ERROR MESSAGE: Too small: expected array to have >=1 items
@@ -208,7 +208,7 @@ ERROR MESSAGE: Too small: expected array to have >=1 items
       fail();
     } catch (e: any) {
       expect(e.message).toEqual(
-        `[@pdfme/common] fallback flag is not found in font. true fallback flag must be only one.
+        `[@walcu-engineering/pdfme-common] fallback flag is not found in font. true fallback flag must be only one.
 Check this document: https://pdfme.com/docs/custom-fonts#about-font-type`
       );
     }
@@ -239,7 +239,7 @@ Check this document: https://pdfme.com/docs/custom-fonts#about-font-type`
       fail();
     } catch (e: any) {
       expect(e.message).toEqual(
-        `[@pdfme/common] 2 fallback flags found in font. true fallback flag must be only one.
+        `[@walcu-engineering/pdfme-common] 2 fallback flags found in font. true fallback flag must be only one.
 Check this document: https://pdfme.com/docs/custom-fonts#about-font-type`
       );
     }
@@ -275,7 +275,7 @@ Check this document: https://pdfme.com/docs/custom-fonts#about-font-type`
       fail();
     } catch (e: any) {
       expect(e.message).toEqual(
-        `[@pdfme/common] DUMMY_FONT of template.schemas is not found in font.
+        `[@walcu-engineering/pdfme-common] DUMMY_FONT of template.schemas is not found in font.
 Check this document: https://pdfme.com/docs/custom-fonts`
       );
     }

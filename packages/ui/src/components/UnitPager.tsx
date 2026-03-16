@@ -1,5 +1,5 @@
 import React from 'react';
-import { Size } from '@pdfme/common';
+import { Size } from '@walcu-engineering/pdfme-common';
 import { theme, Typography, Button } from 'antd';
 import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from 'lucide-react';
 

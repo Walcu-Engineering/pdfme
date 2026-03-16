@@ -1,6 +1,6 @@
 import { Space, Button, Form, theme } from 'antd';
 import React from 'react';
-import type { PropPanelWidgetProps, SchemaForUI } from '@pdfme/common';
+import type { PropPanelWidgetProps, SchemaForUI } from '@walcu-engineering/pdfme-common';
 interface ButtonConfig {
   key: string;
   icon: string;

@@ -8,7 +8,7 @@ For elements that are not supported, you can add your own rendering process usin
 :::info
 
 For using schemas other than the Text schema, please refer to the following documentation.  
-[Using Schemas from @pdfme/schemas](/docs/custom-schemas#using-schemas-from-pdfmeschemas)
+[Using Schemas from @walcu-engineering/pdfme-schemas](/docs/custom-schemas#using-schemas-from-pdfmeschemas)
 
 :::
 

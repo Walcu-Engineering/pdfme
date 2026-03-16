@@ -1,4 +1,4 @@
-import { Schema, mm2pt, pt2mm } from '@pdfme/common';
+import { Schema, mm2pt, pt2mm } from '@walcu-engineering/pdfme-common';
 import { convertForPdfLayoutProps, rotatePoint, hex2RgbColor, createSvgStr } from '../src/utils.js';
 import { SquareCheck, IconNode } from 'lucide';
 

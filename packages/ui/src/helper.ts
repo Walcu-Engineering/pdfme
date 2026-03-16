@@ -11,8 +11,8 @@ import {
   Size,
   isBlankPdf,
   PluginRegistry,
-} from '@pdfme/common';
-import { pdf2size } from '@pdfme/converter';
+} from '@walcu-engineering/pdfme-common';
+import { pdf2size } from '@walcu-engineering/pdfme-converter';
 import { DEFAULT_MAX_ZOOM, RULER_HEIGHT } from './constants.js';
 import { OptionsContext } from './contexts.js';
 

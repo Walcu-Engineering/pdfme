@@ -41,7 +41,7 @@ export const getFallbackFontName = (font: Font) => {
   }, initial);
   if (fallbackFontName === initial) {
     throw Error(
-      `[@pdfme/common] fallback flag is not found in font. true fallback flag must be only one.`,
+      `[@walcu-engineering/pdfme-common] fallback flag is not found in font. true fallback flag must be only one.`,
     );
   }
 
@@ -77,7 +77,7 @@ const blob2Base64Pdf = (blob: Blob) => {
       if ((reader.result as string).startsWith('data:application/pdf;')) {
         resolve(reader.result as string);
       } else {
-        reject(Error('[@pdfme/common] template.basePdf must be pdf data.'));
+        reject(Error('[@walcu-engineering/pdfme-common] template.basePdf must be pdf data.'));
       }
     };
     reader.readAsDataURL(blob);
@@ -182,13 +182,13 @@ export const checkFont = (arg: { font: Font; template: Template }) => {
   const fallbackFontNum = fontValues.reduce((acc, cur) => (cur.fallback ? acc + 1 : acc), 0 as number);
   if (fallbackFontNum === 0) {
     throw Error(
-      `[@pdfme/common] fallback flag is not found in font. true fallback flag must be only one.
+      `[@walcu-engineering/pdfme-common] fallback flag is not found in font. true fallback flag must be only one.
 Check this document: https://pdfme.com/docs/custom-fonts#about-font-type`,
     );
   }
   if (fallbackFontNum > 1) {
     throw Error(
-      `[@pdfme/common] ${fallbackFontNum} fallback flags found in font. true fallback flag must be only one.
+      `[@walcu-engineering/pdfme-common] ${fallbackFontNum} fallback flags found in font. true fallback flag must be only one.
 Check this document: https://pdfme.com/docs/custom-fonts#about-font-type`,
     );
   }
@@ -197,7 +197,7 @@ Check this document: https://pdfme.com/docs/custom-fonts#about-font-type`,
   const fontNames = Object.keys(font);
   if (fontNamesInSchemas.some((f) => !fontNames.includes(f))) {
     throw Error(
-      `[@pdfme/common] ${fontNamesInSchemas
+      `[@walcu-engineering/pdfme-common] ${fontNamesInSchemas
         .filter((f) => !fontNames.includes(f))
         .join()} of template.schemas is not found in font.
 Check this document: https://pdfme.com/docs/custom-fonts`,
@@ -218,7 +218,7 @@ export const checkPlugins = (arg: { plugins: Plugins; template: Template }) => {
 
   if (allSchemaTypes.some((s) => !pluginsSchemaTypes.includes(s))) {
     throw Error(
-      `[@pdfme/common] ${allSchemaTypes
+      `[@walcu-engineering/pdfme-common] ${allSchemaTypes
         .filter((s) => !pluginsSchemaTypes.includes(s))
         .join()} of template.schemas is not found in plugins.`,
     );
@@ -235,12 +235,12 @@ const checkProps = <T>(data: unknown, zodSchema: z.ZodType<T>) => {
 ERROR MESSAGE: ${issue.message}
 --------------------------`,
       );
-      throw Error(`[@pdfme/common] Invalid argument:
+      throw Error(`[@walcu-engineering/pdfme-common] Invalid argument:
 --------------------------
 ${messages.join('\n')}`);
     } else {
       throw Error(
-        `[@pdfme/common] Unexpected parsing error: ${e instanceof Error ? e.message : String(e)}`,
+        `[@walcu-engineering/pdfme-common] Unexpected parsing error: ${e instanceof Error ? e.message : String(e)}`,
       );
     }
   }

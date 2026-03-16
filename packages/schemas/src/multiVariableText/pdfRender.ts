@@ -1,4 +1,4 @@
-import { PDFRenderProps } from '@pdfme/common';
+import { PDFRenderProps } from '@walcu-engineering/pdfme-common';
 import { MultiVariableTextSchema } from './types.js';
 import { pdfRender as parentPdfRender } from '../text/pdfRender.js';
 import { substituteVariables, validateVariables } from './helper.js';

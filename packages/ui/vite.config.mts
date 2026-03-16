@@ -10,13 +10,13 @@ export default defineConfig(({ mode }) => {
     build: {
       lib: {
         entry: 'src/index.ts',
-        name: '@pdfme/ui',
+        name: '@walcu-engineering/pdfme-ui',
         fileName: (format) => `index.${format}.js`,
       },
     },
     optimizeDeps: {
       include: ['react', 'react-dom', 'pdfjs-dist', 'antd'],
-      exclude: ['@pdfme/common', '@pdfme/schemas', '@pdfme/converter'],
+      exclude: ['@walcu-engineering/pdfme-common', '@walcu-engineering/pdfme-schemas', '@walcu-engineering/pdfme-converter'],
     },
   };
 });

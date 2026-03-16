@@ -27,12 +27,12 @@ pdfme is built with a focus on performance, minimal dependencies, and ease of us
 - [Changelog](https://github.com/pdfme/pdfme/releases): Version history and updates
 
 ## Package Ecosystem
-- [Generator Package](https://www.npmjs.com/package/@pdfme/generator): PDF generation from templates
-- [UI Package](https://www.npmjs.com/package/@pdfme/ui): Designer, Form, and Viewer components
-- [Schemas Package](https://www.npmjs.com/package/@pdfme/schemas): Built-in field types and schemas
-- [Manipulator Package](https://www.npmjs.com/package/@pdfme/manipulator): PDF manipulation utilities
+- [Generator Package](https://www.npmjs.com/package/@walcu-engineering/pdfme-generator): PDF generation from templates
+- [UI Package](https://www.npmjs.com/package/@walcu-engineering/pdfme-ui): Designer, Form, and Viewer components
+- [Schemas Package](https://www.npmjs.com/package/@walcu-engineering/pdfme-schemas): Built-in field types and schemas
+- [Manipulator Package](https://www.npmjs.com/package/@walcu-engineering/pdfme-manipulator): PDF manipulation utilities
 
 ## Optional
-- [Converter Package](https://www.npmjs.com/package/@pdfme/converter): PDF conversion utilities
-- [Common Package](https://www.npmjs.com/package/@pdfme/common): Shared utilities and types
+- [Converter Package](https://www.npmjs.com/package/@walcu-engineering/pdfme-converter): PDF conversion utilities
+- [Common Package](https://www.npmjs.com/package/@walcu-engineering/pdfme-common): Shared utilities and types
 - [Cloud Service](https://app.pdfme.com): Commercial hosted solution

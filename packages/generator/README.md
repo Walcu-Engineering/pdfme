@@ -1,4 +1,4 @@
-## @pdfme/generator
+## @walcu-engineering/pdfme-generator
 
 This library provides the `generate` function for creating PDF files using templates and inputs.
 

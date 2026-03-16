@@ -1,5 +1,5 @@
-const { BLANK_PDF } = require('@pdfme/common');
-const { generate } = require('@pdfme/generator');
+const { BLANK_PDF } = require('@walcu-engineering/pdfme-common');
+const { generate } = require('@walcu-engineering/pdfme-generator');
 const fs = require('fs');
 const path = require('path');
 

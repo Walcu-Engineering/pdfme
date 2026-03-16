@@ -1,4 +1,4 @@
-import { Plugin, Schema } from '@pdfme/common';
+import { Plugin, Schema } from '@walcu-engineering/pdfme-common';
 import {
   convertForPdfLayoutProps,
   isEditable,

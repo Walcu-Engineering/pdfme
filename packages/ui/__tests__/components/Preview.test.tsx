@@ -8,9 +8,9 @@ import Preview from '../../src/components/Preview';
 import { I18nContext, FontContext, PluginsRegistry } from '../../src/contexts';
 import { i18n } from '../../src/i18n';
 import { SELECTABLE_CLASSNAME } from '../../src/constants';
-import { getDefaultFont, pluginRegistry } from '@pdfme/common';
+import { getDefaultFont, pluginRegistry } from '@walcu-engineering/pdfme-common';
 import { setupUIMock, getSampleTemplate } from '../assets/helper';
-import { text, image } from "@pdfme/schemas"
+import { text, image } from "@walcu-engineering/pdfme-schemas"
 
 const plugins = pluginRegistry({ text, image, })
 

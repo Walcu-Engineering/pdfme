@@ -20,28 +20,28 @@ There are two packages in pdfme, generator and UI.
 The package for generating PDF can be installed with the following command.
 
 ```
-npm i @pdfme/generator @pdfme/common
+npm i @walcu-engineering/pdfme-generator @walcu-engineering/pdfme-common
 ```
 
 The packages for using PDF designer, forms and viewers can be installed with the following commands.
 
 ```
-npm i @pdfme/ui @pdfme/common
+npm i @walcu-engineering/pdfme-ui @walcu-engineering/pdfme-common
 ```
 
-\*You must install `@pdfme/common` regardless of which package you use.
+\*You must install `@walcu-engineering/pdfme-common` regardless of which package you use.
 
 The following type, function and classes are available in pdfme.
 
-`@pdfme/common`
+`@walcu-engineering/pdfme-common`
 
 - [Template](/docs/getting-started#template)
 
-`@pdfme/generator`
+`@walcu-engineering/pdfme-generator`
 
 - [generate](/docs/getting-started#generator)
 
-`@pdfme/ui`
+`@walcu-engineering/pdfme-ui`
 
 - [Designer](/docs/getting-started#designer)
 - [Form](/docs/getting-started#form)
@@ -50,13 +50,13 @@ The following type, function and classes are available in pdfme.
 If your environment uses webpack, import the necessary items as shown below.
 
 ```ts
-import type { Template } from '@pdfme/common';
-import { generate } from '@pdfme/generator';
+import type { Template } from '@walcu-engineering/pdfme-common';
+import { generate } from '@walcu-engineering/pdfme-generator';
 ```
 
 ```ts
-import type { Template } from '@pdfme/common';
-import { Designer, Form, Viewer } from '@pdfme/ui';
+import type { Template } from '@walcu-engineering/pdfme-common';
+import { Designer, Form, Viewer } from '@walcu-engineering/pdfme-ui';
 ```
 
 **All objects use `Template`, which will be briefly explained in the next section.**
@@ -64,7 +64,7 @@ import { Designer, Form, Viewer } from '@pdfme/ui';
 ## Template
 
 The core of pdfme library are Templates.  
-Template Type can be imported by both `@pdfme/generator` or `@pdfme/ui`. Templates are used everywhere.
+Template Type can be imported by both `@walcu-engineering/pdfme-generator` or `@walcu-engineering/pdfme-ui`. Templates are used everywhere.
 
 A template can be divided into two parts: a fixed part and a variable part.  
 We call them basePdf and schema.
@@ -82,7 +82,7 @@ basePdf: { "width": 210, "height": 297, "padding": [10, 10, 10, 10] }
 ```
 
 
-**schemas** can only utilize text by default, but you can load images and various barcodes like QR codes as plugins from the `@pdfme/schemas` package.  
+**schemas** can only utilize text by default, but you can load images and various barcodes like QR codes as plugins from the `@walcu-engineering/pdfme-schemas` package.  
 Additionally, you can create your own schemas, allowing you to render types other than the ones mentioned above.  
 Check detail about [Custom Schemas](/docs/custom-schemas).
 
@@ -92,7 +92,7 @@ Let's take a look at some specific data.
 ### Minimal Template
 
 ```ts
-import { Template, BLANK_PDF } from '@pdfme/common';
+import { Template, BLANK_PDF } from '@walcu-engineering/pdfme-common';
 
 const template: Template = {
   basePdf: BLANK_PDF,
@@ -128,14 +128,14 @@ You can create a template from [Template Design page](/template-design?ui=design
 
 ### Using Plugins
 
-By default, examples often demonstrate the use of the `text` schema type. However, you can use other built-in schema types or even create your own custom schemas with the `@pdfme/schemas` package.
+By default, examples often demonstrate the use of the `text` schema type. However, you can use other built-in schema types or even create your own custom schemas with the `@walcu-engineering/pdfme-schemas` package.
 
-#### Step 1: Install `@pdfme/schemas`
+#### Step 1: Install `@walcu-engineering/pdfme-schemas`
 
 Install the necessary package to access additional schema types.
 
 ```bash
-npm install @pdfme/schemas
+npm install @walcu-engineering/pdfme-schemas
 ```
 
 #### Step 2: Use Built-in and Custom Schema Types
@@ -143,8 +143,8 @@ npm install @pdfme/schemas
 Here’s an example of a template using both built-in and custom schema types:
 
 ```ts
-import { Template, BLANK_PDF } from '@pdfme/common';
-import { text, barcodes, image } from '@pdfme/schemas';
+import { Template, BLANK_PDF } from '@walcu-engineering/pdfme-common';
+import { text, barcodes, image } from '@walcu-engineering/pdfme-schemas';
 import myCustomPlugin from './custom-plugins';
 
 const template: Template = {
@@ -211,8 +211,8 @@ The PDF generator function, `generate`, takes 2 arguments of `template` and `inp
 The code to generate a PDF file using the [template created above](/docs/getting-started#minimal-template) is shown below.
 
 ```ts
-import type { Template } from '@pdfme/common';
-import { generate } from '@pdfme/generator';
+import type { Template } from '@walcu-engineering/pdfme-common';
+import { generate } from '@walcu-engineering/pdfme-generator';
 
 const template: Template = {
   // skip...　Check the Template section.
@@ -250,8 +250,8 @@ You can design your own template from [Template Design page](/template-design?ui
 Let's integrate the designer using the template created above as the default template.
 
 ```ts
-import type { Template } from '@pdfme/common';
-import { Designer } from '@pdfme/ui';
+import type { Template } from '@walcu-engineering/pdfme-common';
+import { Designer } from '@walcu-engineering/pdfme-ui';
 
 const domContainer = document.getElementById('container');
 const template: Template = {
@@ -290,8 +290,8 @@ The Form creates a UI for the user to enter schemas based on the template.
 You can try out the form that uses the invoice template from [here](/template-design?ui=form-viewer&template=invoice).
 
 ```ts
-import type { Template } from '@pdfme/common';
-import { Form } from '@pdfme/ui';
+import type { Template } from '@walcu-engineering/pdfme-common';
+import { Form } from '@walcu-engineering/pdfme-ui';
 
 const domContainer = document.getElementById('container');
 const template: Template = {
@@ -325,8 +325,8 @@ The Viewer is a byproduct of the Form development process, but it allows you to 
 Using the Viewer is basically the same as using the Form, except that user cannot edit it.
 
 ```ts
-import type { Template } from '@pdfme/common';
-import { Viewer } from '@pdfme/ui';
+import type { Template } from '@walcu-engineering/pdfme-common';
+import { Viewer } from '@walcu-engineering/pdfme-ui';
 
 const domContainer = document.getElementById('container');
 const template: Template = {

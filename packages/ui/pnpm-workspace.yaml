@@ -1,7 +1,4 @@
 overrides:
-  '@pdfme/common': link:../../../../.local/share/pnpm/global/5/node_modules/@pdfme/common
-  '@pdfme/converter': link:../../../../.local/share/pnpm/global/5/node_modules/@pdfme/converter
-  '@pdfme/schemas': link:../../../../.local/share/pnpm/global/5/node_modules/@pdfme/schemas
-  '@walcu-engineering/pdfme-common': link:../../../../.local/share/pnpm/global/5/node_modules/@pdfme/common
-  '@walcu-engineering/pdfme-converter': link:../../../../.local/share/pnpm/global/5/node_modules/@pdfme/converter
-  '@walcu-engineering/pdfme-schemas': link:../../../../.local/share/pnpm/global/5/node_modules/@pdfme/schemas
+  '@walcu-engineering/pdfme-common': link:../../../../.local/share/pnpm/global/5/node_modules/@walcu-engineering/pdfme-common
+  '@walcu-engineering/pdfme-converter': link:../../../../.local/share/pnpm/global/5/node_modules/@walcu-engineering/pdfme-converter
+  '@walcu-engineering/pdfme-schemas': link:../../../../.local/share/pnpm/global/5/node_modules/@walcu-engineering/pdfme-schemas

@@ -1,7 +1,7 @@
 import { readFileSync } from 'fs';
 import * as path from 'path';
 import type { Font as FontKitFont } from 'fontkit';
-import { Font, getDefaultFont } from '@pdfme/common';
+import { Font, getDefaultFont } from '@walcu-engineering/pdfme-common';
 import {
   calculateDynamicFontSize,
   getBrowserVerticalFontAdjustments,

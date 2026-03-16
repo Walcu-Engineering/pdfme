@@ -75,7 +75,7 @@ describe('validateVariables', () => {
   it('should throw an error for missing required variables', () => {
     const value = JSON.stringify({ var1: 'value1' });
     expect(() => validateVariables(value, schema)).toThrowError(
-      '[@pdfme/generator] variable var2 is missing for field test'
+      '[@walcu-engineering/pdfme-generator] variable var2 is missing for field test'
     );
   });
 

@@ -1,4 +1,4 @@
-# @pdfme/pdf-lib
+# @walcu-engineering/pdfme-pdf-lib
 
 This version is forked from [Hopding/pdf-lib](https://github.com/Hopding/pdf-lib).  
 Incorporated several bug fixes and additional features into the original code.
@@ -22,7 +22,7 @@ To achieve [Add SVG Schema #29](https://github.com/pdfme/pdfme/issues/29) featur
 <details>
   <summary><a href="https://github.com/pdfme/pdfme/issues/162">2023/04/20 - Character corruption occurs when enabling subsets for some Japanese and Chinese fonts #162</a></summary>
 
-@pdfme/pdf-lib compatible with [foliojs/fontkit](https://github.com/foliojs/fontkit) v2
+@walcu-engineering/pdfme-pdf-lib compatible with [foliojs/fontkit](https://github.com/foliojs/fontkit) v2
 
 ```js
 import { PDFDocument, rgb } from 'pdf-lib'
@@ -62,9 +62,9 @@ pdfDoc.registerFontkit(fontkit)
 
 <div align="center">
   <!-- NPM Version -->
-  <a href="https://www.npmjs.com/package/@pdfme/pdf-lib">
+  <a href="https://www.npmjs.com/package/@walcu-engineering/pdfme-pdf-lib">
     <img
-      src="https://img.shields.io/npm/v/@pdfme/pdf-lib.svg?style=flat-square"
+      src="https://img.shields.io/npm/v/@walcu-engineering/pdfme-pdf-lib.svg?style=flat-square"
       alt="NPM Version"
     />
   </a>

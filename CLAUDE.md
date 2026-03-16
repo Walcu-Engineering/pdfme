@@ -74,10 +74,10 @@ npm run prettier  # Format code
 
 ### Building Individual Packages
 ```bash
-npm run build:common      # Build @pdfme/common
-npm run build:schemas     # Build @pdfme/schemas
-npm run build:generator   # Build @pdfme/generator
-npm run build:ui          # Build @pdfme/ui
+npm run build:common      # Build @walcu-engineering/pdfme-common
+npm run build:schemas     # Build @walcu-engineering/pdfme-schemas
+npm run build:generator   # Build @walcu-engineering/pdfme-generator
+npm run build:ui          # Build @walcu-engineering/pdfme-ui
 ```
 
 ## Architecture and Code Structure
@@ -246,7 +246,7 @@ npm install --legacy-peer-deps
 
 #### Missing Type Definitions
 - Check `packages/common/src/types.ts` for core type definitions
-- Ensure proper imports: `import type { Template } from '@pdfme/common'`
+- Ensure proper imports: `import type { Template } from '@walcu-engineering/pdfme-common'`
 - Update type definitions when adding new features
 
 #### Import Resolution Problems
@@ -299,7 +299,7 @@ npm run dev
 - Verify font format compatibility (TTF, OTF)
 
 #### CJK Font Problems
-- Use the forked `@pdfme/pdf-lib` which includes CJK support
+- Use the forked `@walcu-engineering/pdfme-pdf-lib` which includes CJK support
 - Ensure proper font subsetting for large character sets
 - Test with actual CJK content
 
@@ -310,7 +310,7 @@ npm run dev
 # Check for outdated packages
 npm outdated
 # Update specific packages
-npm update @pdfme/common @pdfme/generator
+npm update @walcu-engineering/pdfme-common @walcu-engineering/pdfme-generator
 ```
 
 #### Peer Dependency Issues
