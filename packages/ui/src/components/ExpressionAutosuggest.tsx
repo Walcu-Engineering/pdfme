@@ -10,7 +10,7 @@ import { SchemaForUI } from '@walcu-engineering/pdfme-common';
 
 interface SuggestionEntry {
   name: string;
-  isFunction?: boolean;
+  is_function?: boolean;
 }
 
 const SUGGESTIONS: SuggestionEntry[] = [
@@ -21,47 +21,47 @@ const SUGGESTIONS: SuggestionEntry[] = [
   { name: 'currentPage' },
   // Math namespace
   { name: 'Math' },
-  { name: 'Math.abs',         isFunction: true },
-  { name: 'Math.ceil',        isFunction: true },
-  { name: 'Math.floor',       isFunction: true },
-  { name: 'Math.round',       isFunction: true },
-  { name: 'Math.max',         isFunction: true },
-  { name: 'Math.min',         isFunction: true },
-  { name: 'Math.sqrt',        isFunction: true },
-  { name: 'Math.pow',         isFunction: true },
-  { name: 'Math.log',         isFunction: true },
-  { name: 'Math.sign',        isFunction: true },
-  { name: 'Math.trunc',       isFunction: true },
-  { name: 'Math.random',      isFunction: true },
+  { name: 'Math.abs',           is_function: true },
+  { name: 'Math.ceil',          is_function: true },
+  { name: 'Math.floor',         is_function: true },
+  { name: 'Math.round',         is_function: true },
+  { name: 'Math.max',           is_function: true },
+  { name: 'Math.min',           is_function: true },
+  { name: 'Math.sqrt',          is_function: true },
+  { name: 'Math.pow',           is_function: true },
+  { name: 'Math.log',           is_function: true },
+  { name: 'Math.sign',          is_function: true },
+  { name: 'Math.trunc',         is_function: true },
+  { name: 'Math.random',        is_function: true },
   // Constructors / type coercions
-  { name: 'String',           isFunction: true },
-  { name: 'Number',           isFunction: true },
-  { name: 'Boolean',          isFunction: true },
-  { name: 'Array',            isFunction: true },
-  { name: 'Date',             isFunction: true },
+  { name: 'String',             is_function: true },
+  { name: 'Number',             is_function: true },
+  { name: 'Boolean',            is_function: true },
+  { name: 'Array',              is_function: true },
+  { name: 'Date',               is_function: true },
   // JSON namespace
   { name: 'JSON' },
-  { name: 'JSON.stringify',   isFunction: true },
-  { name: 'JSON.parse',       isFunction: true },
+  { name: 'JSON.stringify',     is_function: true },
+  { name: 'JSON.parse',         is_function: true },
   // Object namespace
   { name: 'Object' },
-  { name: 'Object.keys',        isFunction: true },
-  { name: 'Object.values',      isFunction: true },
-  { name: 'Object.entries',     isFunction: true },
-  { name: 'Object.fromEntries', isFunction: true },
-  { name: 'Object.assign',      isFunction: true },
+  { name: 'Object.keys',        is_function: true },
+  { name: 'Object.values',      is_function: true },
+  { name: 'Object.entries',     is_function: true },
+  { name: 'Object.fromEntries', is_function: true },
+  { name: 'Object.assign',      is_function: true },
   // Global functions
-  { name: 'isNaN',            isFunction: true },
-  { name: 'parseFloat',       isFunction: true },
-  { name: 'parseInt',         isFunction: true },
-  { name: 'encodeURIComponent', isFunction: true },
-  { name: 'decodeURIComponent', isFunction: true },
-  { name: 'toDate',           isFunction: true },
-  { name: 'newDate',          isFunction: true },
+  { name: 'isNaN',              is_function: true },
+  { name: 'parseFloat',         is_function: true },
+  { name: 'parseInt',           is_function: true },
+  { name: 'encodeURIComponent', is_function: true },
+  { name: 'decodeURIComponent', is_function: true },
+  { name: 'toDate',             is_function: true },
+  { name: 'newDate',            is_function: true },
 ];
 
 const SUGGESTION_NAMES = SUGGESTIONS.map((s) => s.name);
-const FUNCTION_SUGGESTIONS = new Set(SUGGESTIONS.filter((s) => s.isFunction).map((s) => s.name));
+const FUNCTION_SUGGESTIONS = new Set(SUGGESTIONS.filter((s) => s.is_function).map((s) => s.name));
 
 function extractSubProperties(value: unknown, prefix: string, depth = 0): string[] {
   if (depth > 5 || typeof value !== 'object' || !value || Array.isArray(value)) return [];
@@ -84,7 +84,6 @@ function buildAllSuggestions(schemasList: SchemaForUI[][]): string[] {
       schemaVars.push(schema.name);
       if (schema.readOnly && schema.content) {
         try {
-          console.debug('schema', schema);
           const parsed = JSON.parse(schema.content);
           if (typeof parsed === 'object' && parsed !== null && !Array.isArray(parsed)) {
             extractSubProperties(parsed, schema.name).forEach((v) => schemaVars.push(v));
@@ -167,8 +166,17 @@ function filterSuggestions(allSuggestions: string[], prefix: string): string[] {
     .slice(0, 20);
 }
 
-function insertSuggestion(element: HTMLElement, selected: string): void {
+function insertSuggestion(element: HTMLElement, selected: string, savedRange?: Range | null): void {
   element.focus();
+
+  // Restore cursor position — focus() alone doesn't preserve it after a blur.
+  if (savedRange) {
+    const sel = window.getSelection();
+    if (sel) {
+      sel.removeAllRanges();
+      sel.addRange(savedRange);
+    }
+  }
 
   const context = getExpressionContext(element);
   if (!context) return;
@@ -181,11 +189,11 @@ function insertSuggestion(element: HTMLElement, selected: string): void {
     selection.modify('extend', 'backward', 'character');
   }
 
-  const isFunction = FUNCTION_SUGGESTIONS.has(selected);
+  const is_function = FUNCTION_SUGGESTIONS.has(selected);
 
   if (context.inFunctionArg) {
     // Inside function parens — insert bare name, no {} wrapping
-    if (isFunction) {
+    if (is_function) {
       document.execCommand('insertText', false, `${selected}()`);
       window.getSelection()?.modify('move', 'backward', 'character'); // cursor between ()
     } else {
@@ -196,7 +204,7 @@ function insertSuggestion(element: HTMLElement, selected: string): void {
     const afterCursor = fullText.slice(context.textToCursor.length);
     const closingBraceExists = afterCursor.startsWith('}');
 
-    if (isFunction) {
+    if (is_function) {
       if (closingBraceExists) {
         // Insert '{selected()' — the existing '}' closes the expression
         document.execCommand('insertText', false, `{${selected}()`);
@@ -211,8 +219,8 @@ function insertSuggestion(element: HTMLElement, selected: string): void {
     } else {
       const insertText = closingBraceExists ? `{${selected}` : `{${selected}}`;
       document.execCommand('insertText', false, insertText);
-      if (closingBraceExists) {
-        window.getSelection()?.modify('move', 'forward', 'character');
+      if (!closingBraceExists) {
+        window.getSelection()?.modify('move', 'backward', 'character');
       }
     }
   }
@@ -245,6 +253,14 @@ interface Props {
 const ExpressionAutosuggest: React.FC<Props> = ({ schemasList }) => {
   const { token } = theme.useToken();
   const allSuggestions = useMemo(() => buildAllSuggestions(schemasList), [schemasList]);
+  const objectSuggestions = useMemo(() => {
+    const set = new Set<string>();
+    for (const s of allSuggestions) {
+      const dotIdx = s.indexOf('.');
+      if (dotIdx !== -1) set.add(s.slice(0, dotIdx));
+    }
+    return set;
+  }, [allSuggestions]);
 
   const [state, setState] = useState<SuggestionState>(initialState);
   const selectedItemRef = useRef<HTMLLIElement | null>(null);
@@ -336,10 +352,7 @@ const ExpressionAutosuggest: React.FC<Props> = ({ schemasList }) => {
 
   const handleFocusout = useCallback((e: FocusEvent) => {
     if (!isTextSchemaElement(e.target)) return;
-    // Delay to let mousedown on a suggestion item fire first (prevents premature close)
-    setTimeout(() => {
-      setState((prev) => (prev.visible ? { ...prev, visible: false, activeElement: null } : prev));
-    }, 150);
+    setState((prev) => (prev.visible ? { ...prev, visible: false, activeElement: null } : prev));
   }, []);
 
   useEffect(() => {
@@ -375,32 +388,43 @@ const ExpressionAutosuggest: React.FC<Props> = ({ schemasList }) => {
         minWidth: 200,
       }}
     >
-      {state.suggestions.map((s, i) => (
-        <li
-          key={s}
-          ref={i === state.selectedIndex ? selectedItemRef : null}
-          style={{
-            padding: `${token.paddingXS}px ${token.paddingSM}px`,
-            background: i === state.selectedIndex ? token.colorPrimaryBg : 'transparent',
-            cursor: 'pointer',
-            fontFamily: 'monospace',
-            fontSize: token.fontSizeSM,
-            color: token.colorText,
-            userSelect: 'none',
-          }}
-          onMouseDown={(e) => {
-            // Prevent blur on the contenteditable so selection is preserved
-            e.preventDefault();
-            if (state.activeElement) {
-              insertSuggestion(state.activeElement, s);
-            }
-            setState((prev) => ({ ...prev, visible: false }));
-          }}
-          onMouseEnter={() => setState((prev) => ({ ...prev, selectedIndex: i }))}
-        >
-          {s}
-        </li>
-      ))}
+      {state.suggestions.map((s, i) => {
+        const isFunction = FUNCTION_SUGGESTIONS.has(s);
+        const isObject = !isFunction && objectSuggestions.has(s);
+        const icon = isFunction ? 'ƒ' : isObject ? '{}' : null;
+        const iconColor = isFunction ? '#9170c2' : '#c4923a';
+        return (
+          <li
+            key={s}
+            ref={i === state.selectedIndex ? selectedItemRef : null}
+            style={{
+              padding: `${token.paddingXS}px ${token.paddingSM}px`,
+              background: i === state.selectedIndex ? token.colorPrimaryBg : 'transparent',
+              fontFamily: 'monospace',
+              fontSize: token.fontSizeSM,
+              color: token.colorText,
+              userSelect: 'none',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              gap: 8,
+            }}
+          >
+            <span>{s}</span>
+            <span style={{
+              fontSize: token.fontSizeSM - 1,
+              fontFamily: 'monospace',
+              color: iconColor,
+              opacity: 0.85,
+              flexShrink: 0,
+              width: 14,
+              textAlign: 'center',
+            }}>
+              {icon}
+            </span>
+          </li>
+        );
+      })}
     </ul>
   );
 };
