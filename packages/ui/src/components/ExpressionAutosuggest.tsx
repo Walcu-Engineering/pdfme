@@ -274,6 +274,17 @@ const ExpressionAutosuggest: React.FC<Props> = ({ schemasList }) => {
   const stateRef = useRef(state);
   stateRef.current = state;
 
+  // Fallback: close if activeElement loses focus (catches cases focusout misses)
+  useEffect(() => {
+    const id = setInterval(() => {
+      const s = stateRef.current;
+      if (s.visible && s.activeElement && document.activeElement !== s.activeElement) {
+        setState((prev) => ({ ...prev, visible: false, activeElement: null }));
+      }
+    }, 200);
+    return () => clearInterval(id);
+  }, []);
+
   const allSuggestionsRef = useRef(allSuggestions);
   allSuggestionsRef.current = allSuggestions;
 
