@@ -33,6 +33,7 @@ import Guides from './Guides.js';
 import Mask from './Mask.js';
 import Padding from './Padding.js';
 import StaticSchema from '../../StaticSchema.js';
+import ExpressionAutosuggest from '../../ExpressionAutosuggest.js';
 
 const mm2px = (mm: number) => mm * 3.7795275591;
 
@@ -530,6 +531,7 @@ const Canvas = (props: Props, ref: Ref<HTMLDivElement>) => {
           );
         }}
       />
+      <ExpressionAutosuggest schemasList={schemasList} />
     </div>
   );
 };
