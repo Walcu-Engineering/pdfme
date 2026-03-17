@@ -99,8 +99,10 @@ function buildAllSuggestions(schemasList: SchemaForUI[][]): string[] {
 }
 
 interface ExpressionContext {
-  prefix: string;
+  prefix: string;            // text used for filtering suggestions
   textToCursor: string;
+  replacementLength: number; // chars to select backward before inserting
+  inFunctionArg: boolean;    // cursor is inside (...) within the expression
 }
 
 function getExpressionContext(element: HTMLElement): ExpressionContext | null {
@@ -112,17 +114,41 @@ function getExpressionContext(element: HTMLElement): ExpressionContext | null {
   preRange.setEnd(range.startContainer, range.startOffset);
   const textToCursor = preRange.toString();
 
+  // Find the innermost unclosed '{' (expression boundary)
   let depth = 0;
+  let braceOpenIdx = -1;
   for (let i = textToCursor.length - 1; i >= 0; i--) {
     if (textToCursor[i] === '}') depth++;
     else if (textToCursor[i] === '{') {
-      if (depth === 0) {
-        return { prefix: textToCursor.slice(i + 1), textToCursor };
-      }
+      if (depth === 0) { braceOpenIdx = i; break; }
       depth--;
     }
   }
-  return null;
+  if (braceOpenIdx === -1) return null;
+
+  const exprPrefix = textToCursor.slice(braceOpenIdx + 1);
+
+  // Detect if cursor is inside a function argument by scanning for unclosed '('
+  let parenDepth = 0;
+  let argStart = -1;
+  for (let i = 0; i < exprPrefix.length; i++) {
+    if (exprPrefix[i] === '(') {
+      parenDepth++;
+      if (parenDepth === 1) argStart = i + 1;
+    } else if (exprPrefix[i] === ')') {
+      parenDepth--;
+      if (parenDepth === 0) argStart = -1;
+    } else if (exprPrefix[i] === ',' && parenDepth === 1) {
+      argStart = i + 1;
+    }
+  }
+
+  if (parenDepth > 0 && argStart !== -1) {
+    const argPrefix = exprPrefix.slice(argStart).trimStart();
+    return { prefix: argPrefix, textToCursor, replacementLength: argPrefix.length, inFunctionArg: true };
+  }
+
+  return { prefix: exprPrefix, textToCursor, replacementLength: exprPrefix.length + 1, inFunctionArg: false };
 }
 
 function getCaretRect(): DOMRect | null {
@@ -150,39 +176,44 @@ function insertSuggestion(element: HTMLElement, selected: string): void {
   const selection = window.getSelection();
   if (!selection?.rangeCount) return;
 
-  const fullText = element.innerText;
-  const afterCursor = fullText.slice(context.textToCursor.length);
-  const closingBraceExists = afterCursor.startsWith('}');
-
-  // Extend selection backwards to cover '{' + prefix
-  const charsToSelect = context.prefix.length + 1; // +1 for '{'
-  for (let i = 0; i < charsToSelect; i++) {
+  // Select backward the text to replace
+  for (let i = 0; i < context.replacementLength; i++) {
     selection.modify('extend', 'backward', 'character');
   }
 
   const isFunction = FUNCTION_SUGGESTIONS.has(selected);
 
-  if (isFunction) {
-    if (closingBraceExists) {
-      // Insert '{selected()' — the existing '}' closes the expression
-      // Cursor ends up after ')', move back 1 to land between '(' and ')'
-      document.execCommand('insertText', false, `{${selected}()`);
-      window.getSelection()?.modify('move', 'backward', 'character');
+  if (context.inFunctionArg) {
+    // Inside function parens — insert bare name, no {} wrapping
+    if (isFunction) {
+      document.execCommand('insertText', false, `${selected}()`);
+      window.getSelection()?.modify('move', 'backward', 'character'); // cursor between ()
     } else {
-      // Insert '{selected()}', then move back 2 to land between '(' and ')'
-      document.execCommand('insertText', false, `{${selected}()}`);
-      const sel = window.getSelection();
-      sel?.modify('move', 'backward', 'character');
-      sel?.modify('move', 'backward', 'character');
+      document.execCommand('insertText', false, selected);
     }
   } else {
-    // Insert '{selected}' or '{selected' depending on whether '}' already follows
-    const insertText = closingBraceExists ? `{${selected}` : `{${selected}}`;
-    document.execCommand('insertText', false, insertText);
+    const fullText = element.innerText;
+    const afterCursor = fullText.slice(context.textToCursor.length);
+    const closingBraceExists = afterCursor.startsWith('}');
 
-    // If '}' already existed, move cursor past it so the expression is fully completed
-    if (closingBraceExists) {
-      window.getSelection()?.modify('move', 'forward', 'character');
+    if (isFunction) {
+      if (closingBraceExists) {
+        // Insert '{selected()' — the existing '}' closes the expression
+        document.execCommand('insertText', false, `{${selected}()`);
+        window.getSelection()?.modify('move', 'backward', 'character');
+      } else {
+        // Insert '{selected()}', move back 2 to land between '(' and ')'
+        document.execCommand('insertText', false, `{${selected}()}`);
+        const sel = window.getSelection();
+        sel?.modify('move', 'backward', 'character');
+        sel?.modify('move', 'backward', 'character');
+      }
+    } else {
+      const insertText = closingBraceExists ? `{${selected}` : `{${selected}}`;
+      document.execCommand('insertText', false, insertText);
+      if (closingBraceExists) {
+        window.getSelection()?.modify('move', 'forward', 'character');
+      }
     }
   }
 }
