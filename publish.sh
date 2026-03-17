@@ -38,8 +38,11 @@ if [[ "$answer" =~ ^[Yy]$ ]]; then
   echo ""
 fi
 
-echo "Building all packages ..."
-pnpm build
+read -p "Build all packages? [Y/n] " build_answer
+if [[ ! "$build_answer" =~ ^[Nn]$ ]]; then
+  echo "Building all packages ..."
+  pnpm build
+fi
 
 echo "Starting publish process for @walcu-engineering/pdfme-* packages..."
 
